@@ -1,3 +1,6 @@
+CREATE DATABASE accessaciti;
+USE accessaciti;
+
 DROP TABLE IF EXISTS location;
 
 CREATE TABLE Location (
