@@ -1,7 +1,6 @@
+DROP DATABASE IF EXISTS accessaciti;
 CREATE DATABASE accessaciti;
 USE accessaciti;
-
-DROP TABLE IF EXISTS location;
 
 CREATE TABLE Location (
     location_id int NOT NULL,
@@ -9,16 +8,12 @@ CREATE TABLE Location (
     long_loc decimal(6,6) NOT NULL
 );
 
-DROP TABLE IF EXISTS type;
-
 CREATE TABLE Type (
     type_id int NOT NULL,
     issue_name char(20) NOT NULL,
     symbol_ref char(100) NOT NULL,
     PRIMARY KEY (type_id)
 );
-
-DROP TABLE IF EXISTS Issue;
 
 CREATE TABLE Issue (
     issue_id int NOT NULL,
