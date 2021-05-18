@@ -20,6 +20,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             VALUES ($username, $email, $password_hash";
     }
 
+    if ($conn->query($sql) === TRUE) {
+        echo "query executed successfully\n";
+    } else {
+        echo "an error occured executing the query\n";
+    }
+
+    $conn->close();
+
     // for debugging purposes
     echo $query;
 } else {
