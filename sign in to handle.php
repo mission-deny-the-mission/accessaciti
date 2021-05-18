@@ -4,9 +4,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     include("connect to database.php");
     $conn = connect_to_database();
 
-    $username = $_POST['username'];
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+    $username = mysql_real_escape_string($_POST['username']);
+    $email = mysql_real_escape_string($_POST['email']);
+    $password = mysql_real_escape_string($_POST['password']);
 
     $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
