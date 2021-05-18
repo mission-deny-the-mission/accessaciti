@@ -25,3 +25,9 @@ CREATE TABLE Issue (
     FOREIGN KEY (location_id) REFERENCES Location(location_id),
     FOREIGN KEY (type_id) REFERENCES Type(type_id)
 );
+
+CREATE TABLE User (
+    username VARCHAR (128),
+    email VARCHAR (128),
+    password_hash VARCHAR (60)
+)
