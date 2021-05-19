@@ -1,7 +1,7 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST')
+{
     include("connect to database.php");
     $conn = connect_to_database();
 
@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         {
             if ($row["username"] === $username)
             {
-                echo "That username is taken.";
+                header("Location: username_already_exists.html");
                 $conn->close();
                 exit();
             }
@@ -33,17 +33,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     {
         $query = "INSERT INTO user (username, firstname, lastname, password_hash)
             VALUES ('$username', '$firstname', '$lastname', '$password_hash');";
-    } else {
+    } else
+    {
         $query = "INSERT INTO user (username, firstname, lastname, email, password_hash)
             VALUES ('$username', '$firstname', '$lastname', '$email', '$password_hash');";
     }
 
-    if ($conn->query($query) === TRUE) {
+    if ($conn->query($query) === TRUE)
+    {
         echo "Sign up was successful<br>";
         header("Location: sign_up_complete.html");
         $conn->close();
         exit();
-    } else {
+    } else
+    {
         echo $query;
         echo "<br><br>";
         echo "an error occured executing the query<br><br>";
@@ -55,4 +58,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 } else {
     echo "You should not be here";
 }
-?>
