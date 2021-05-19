@@ -2,39 +2,38 @@
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-    print_r("Got post request");
-    print_r($_POST);
     include("connect to database.php");
     $conn = connect_to_database();
 
-    $username = mysql_real_escape_string($_POST['username']);
-    $firstname = mysql_real_escape_string($_POST['firstname']);
-    $lastname = mysql_real_escape_string($_POST['lastname']);
-    $email = mysql_real_escape_string($_POST['email']);
-    $password = mysql_real_escape_string($_POST['password']);
+    $username = mysqli_real_escape_string($conn, $_POST['username']);
+    $firstname = mysqli_real_escape_string($conn, $_POST['firstname']);
+    $lastname = mysqli_real_escape_string($conn, $_POST['lastname']);
+    $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $password = mysqli_real_escape_string($conn, $_POST['password']);
 
     $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
     // TODO: find out if this is the best way to check for null
     if ($email == "")
     {
-        $query = "INSERT INTO users (username, firstname, lastname, password_hash)
-            VALUES ($username, $firstname, $lastname, $password_hash);";
+        $query = "INSERT INTO user (username, firstname, lastname, password_hash)
+            VALUES ('$username', '$firstname', '$lastname', '$password_hash');";
     } else {
-        $query = "INSERT INTO users (username, firstname, lastname, email, password_hash)
-            VALUES ($username, $firstname, $lastname, $email, $password_hash";
+        $query = "INSERT INTO user (username, firstname, lastname, email, password_hash)
+            VALUES ('$username', '$firstname', '$lastname', '$email', '$password_hash');";
     }
 
-    if ($conn->query($sql) === TRUE) {
-        echo "query executed successfully\n";
+    if ($conn->query($query) === TRUE) {
+        echo "query executed successfully<br>";
     } else {
-        echo "an error occured executing the query\n";
+        echo $query;
+        echo "<br>";
+        echo "an error occured executing the query<br>";
+        echo mysqli_error($conn);
     }
 
     $conn->close();
 
-    // for debugging purposes
-    echo $query;
 } else {
     echo "You should not be here";
 }
