@@ -1,6 +1,9 @@
 <?php
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+
+    print_r("Got post request");
+    print_r($_POST);
     include("connect to database.php");
     $conn = connect_to_database();
 
