@@ -24,7 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if ($conn->query($query) === TRUE) {
-        echo "query executed successfully<br>";
+        echo "Sign up was successful<br>";
+        header("Location: sign_up_complete.html");
+        exit();
     } else {
         echo $query;
         echo "<br>";
