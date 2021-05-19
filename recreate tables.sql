@@ -27,7 +27,10 @@ CREATE TABLE Issue (
 );
 
 CREATE TABLE User (
-    username VARCHAR (128),
+    username VARCHAR (128) NOT NULL,
+    firstname VARCHAR (60) NOT NULL,
+    lastname VARCHAR (60) NOT NULL,
     email VARCHAR (128),
-    password_hash VARCHAR (60)
+    password_hash VARCHAR (60),
+    PRIMARY KEY (username)
 )

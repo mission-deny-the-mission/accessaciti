@@ -5,6 +5,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $conn = connect_to_database();
 
     $username = mysql_real_escape_string($_POST['username']);
+    $firstname = mysql_real_escape_string($_POST['firstname']);
+    $lastname = mysql_real_escape_string($_POST['lastname']);
     $email = mysql_real_escape_string($_POST['email']);
     $password = mysql_real_escape_string($_POST['password']);
 
@@ -13,11 +15,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // TODO: find out if this is the best way to check for null
     if ($email == "")
     {
-        $query = "INSERT INTO users (username, password_hash)
-            VALUES ($username, $password_hash);";
+        $query = "INSERT INTO users (username, firstname, lastname, password_hash)
+            VALUES ($username, $firstname, $lastname, $password_hash);";
     } else {
-        $query = "INSERT INTO users (username, email, password_hash)
-            VALUES ($username, $email, $password_hash";
+        $query = "INSERT INTO users (username, firstname, lastname, email, password_hash)
+            VALUES ($username, $firstname, $lastname, $email, $password_hash";
     }
 
     if ($conn->query($sql) === TRUE) {
