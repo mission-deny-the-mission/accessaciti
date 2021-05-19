@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        
-        <h1 style="font-family:Century Gothic;">Create Your Account</h1>
-    <head>
-        <body>
-           
-<form>
-    <br>
-    <label style="font-family:Century Gothic;">First Name:</label><br>
-    <input type="text" id="fname" name="fname"><br>
-    <br>
-    <label style="font-family:Century Gothic;">Last Name:</label><br>
-    <input type="text" id="lname" name="lname"><br>
-    <br>
-    <label style="font-family:Century Gothic;">Username:</label><br>
-    <input type="text" id="lname" name="lname"><br>
-  </form>
-  <br>
-  <form>
-      <label style="font-family:Century Gothic;"> Email Address:<label><br>
-      <input type="text" id="fname" name="fname"><br>
-  </form>
-  <br>
-  <form>
-      <label style="font-family:Century Gothic;">Create Password:</label><br>
-      <input type="text" id="fCreate a Password" name="fCreate a Password"><br>
+
+<head>
+
+  <link rel="stylesheet" href="main.css">
+  <h1 >Create Your Account</h1>
+
+  <head>
+
+  <body>
+
+    <form action="sign up handle.php" method="POST">
       <br>
-    <label style="font-family:Century Gothic;">Confirm Password :</label><br>
+      <label>First Name:</label><br>
+      <input type="text" id="fname" name="firstname"><br>
+      <br>
+      <label>Last Name:</label><br>
+      <input type="text" id="lname" name="lastname"><br>
+      <br>
+      <label>Username:</label><br>
+      <input type="text" id="uname" name="username"><br>
+    </form>
+    <br>
+    <form>
+      <label> Email Address:<label><br>
+          <input type="text" id="fname" name="email"><br>
+    </form>
+    <br>
+    <form id="signUpForm">
+      <label>Create Password:</label><br>
+      <input type="text" id="fCreate a Password" name="password"><br>
+      <br>
+      <label>Confirm Password :</label><br>
       <input type="text" id="fConfirm Your Password" name="fConfirm Your Password"><br>
-  </form>
-  <br>
-  <button style="font-family:Century Gothic;"onclick="myFunction()">Sign Up</button>
+    </form>
+    <br>
+    <!--
+  <button onclick="myFunction()">Sign Up</button>
+  -->
+    <button type="submit" form="signUpForm" value="Submit">Sign Up</button>
+
 <body>
-  </html>
+
+</html>
