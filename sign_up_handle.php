@@ -12,6 +12,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
 
+    if ($username == "" || $firstname == "" || $lastname == "" || $password == "")
+    {
+        header("Location: required_field_is_blank.html");
+        exit();
+    }
+
     if (!($password == $confirm_password))
     {
         header("Location: passwords_dont_match.html");
