@@ -27,10 +27,15 @@ CREATE TABLE Issue (
 );
 
 CREATE TABLE User (
+    user_id int NOT NULL AUTO_INCREMENT,
     username VARCHAR (128) NOT NULL,
     firstname VARCHAR (60) NOT NULL,
     lastname VARCHAR (60) NOT NULL,
     email VARCHAR (128),
     password_hash VARCHAR (60),
-    PRIMARY KEY (username)
-)
+    PRIMARY KEY (user_id)
+);
+
+CREATE TABLE date (
+	date datetime 
+);
