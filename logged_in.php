@@ -1,12 +1,19 @@
 <?php
 session_start();
-if ($_SESSION["valid"])
+try
 {
-    echo "You have logged in successfully<br>";
-    echo "Your username is " . $_SESSION["username"];
+    if ($_SESSION["valid"])
+    {
+        echo "You have logged in successfully<br>";
+        echo "Your username is " . $_SESSION["username"];
+    }
+    else
+    {
+        echo "You are not logged in";
+    }
 }
-else
+catch (Exception $e)
 {
-    echo "You are not logged in";
+    echo "You are deffo not logged in";
 }
 ?>

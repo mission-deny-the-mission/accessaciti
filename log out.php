@@ -5,9 +5,10 @@
     </head>
     <body>
         <?php
+        session_start();
         session_destroy();
         echo "You have successfully logged out"
         ?>
-        <button onclick="document.location='index.html'">Back to home page</button>
+        <button onclick="document.location='/'">Back to home page</button>
     </body>
 <html>
