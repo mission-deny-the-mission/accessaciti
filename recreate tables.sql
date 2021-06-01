@@ -5,7 +5,8 @@ USE accessaciti;
 CREATE TABLE Location (
     location_id int NOT NULL AUTO_INCREMENT,
     lat_loc decimal(6,6) NOT NULL,
-    long_loc decimal(6,6) NOT NULL
+    long_loc decimal(6,6) NOT NULL,
+    PRIMARY KEY (location_id)
 );
 
 CREATE TABLE Type (
