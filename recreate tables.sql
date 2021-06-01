@@ -3,7 +3,7 @@ CREATE DATABASE accessaciti;
 USE accessaciti;
 
 CREATE TABLE Location (
-    location_id int NOT NULL,
+    location_id int NOT NULL AUTO_INCREMENT,
     lat_loc decimal(6,6) NOT NULL,
     long_loc decimal(6,6) NOT NULL
 );
