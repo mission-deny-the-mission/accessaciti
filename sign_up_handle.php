@@ -1,7 +1,6 @@
 <?php
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST')
-{
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     include("connect to database.php");
     $conn = connect_to_database();
 
@@ -12,54 +11,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     $password = mysqli_real_escape_string($conn, $_POST['password']);
     $confirm_password = mysqli_real_escape_string($conn, $_POST['confirm_password']);
 
-    if ($username == "" || $firstname == "" || $lastname == "" || $password == "")
-    {
+    if ($username == "" || $firstname == "" || $lastname == "" || $password == "") {
         header("Location: required_field_is_blank.html");
         exit();
     }
 
-    if (!($password == $confirm_password))
-    {
+    if (!($password == $confirm_password)) {
         header("Location: passwords_dont_match.html");
         exit();
     }
 
     $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
-    $previous_usernames = $conn->query("SELECT username FROM user;");
+    $previous_usernames = $conn->query("SELECT username FROM user WHERE username = '$username'");
 
-    if ($previous_usernames->num_rows > 0)
-    {
-        while ($row = $previous_usernames->fetch_assoc())
-        {
-            if ($row["username"] === $username)
-            {
-                header("Location: username_already_exists.html");
-                $conn->close();
-                exit();
-            }
-        }
+    if ($previous_usernames->num_rows > 0) {
+        header("Location: username_already_exists.html");
+        $conn->close();
+        exit();
     }
 
     // TODO: find out if this is the best way to check for null
-    if ($email == "")
-    {
+    if ($email == "") {
         $query = "INSERT INTO user (username, firstname, lastname, password_hash)
             VALUES ('$username', '$firstname', '$lastname', '$password_hash');";
-    } else
-    {
+    } else {
         $query = "INSERT INTO user (username, firstname, lastname, email, password_hash)
             VALUES ('$username', '$firstname', '$lastname', '$email', '$password_hash');";
     }
 
-    if ($conn->query($query) === TRUE)
-    {
+    if ($conn->query($query) === TRUE) {
         echo "Sign up was successful<br>";
         header("Location: sign_up_complete.html");
         $conn->close();
         exit();
-    } else
-    {
+    } else {
         echo $query;
         echo "<br><br>";
         echo "an error occured executing the query<br><br>";
@@ -67,7 +53,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST')
     }
 
     $conn->close();
-
 } else {
     echo "You should not be here";
 }
