@@ -1,3 +1,12 @@
+<?php
+session_start();
+
+if (!$_SESSION["valid"]) {
+    header("Location: change password not logged in.html");
+    exit();
+}
+?>
+
 <html>
     <head>
         <link rel="stylesheet" href="main.css">
