@@ -14,7 +14,7 @@ if (!$_SESSION["valid"]) {
     </head>
     <body>
         <h1>Change password:</h1>
-        <form>
+        <form method =$POST action="password change backend.php">
             <label for="old password">Old password</label><br>
             <input type="text" name="old password" id="old password"><br>
             <label for="new password">New password</label><br>
