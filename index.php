@@ -25,6 +25,7 @@ if (isset($_SESSION["valid"]) && $_SESSION["valid"]) {
             </div>
             <ul class="nav-area">
                 <li><a href="#">About</a></li>
+                <li><a href="submit report.html">Submit bulding report</a></li>
                 <?php
                 if (!$loggedIn) {
                     echo "<li><a href='login.php'>Login</a></li>\n";
