@@ -34,7 +34,7 @@ WHERE username = '$username' OR email = '$username'";
                 $_SESSION["timeout"] = time();
                 $_SESSION["userid"] = $user["user_id"];
                 $_SESSION["username"] = $user["username"];
-                header("Location: logged_in.php");
+                header("Location: index.php");
                 exit();
             } else {
                 // password is not correct
