@@ -40,8 +40,10 @@ VALUES ('$description', $illegality, $location_id, 0, 0, '')";
 echo $sql . "<br>";
 
 if ($conn->query($sql) === TRUE) {
-    echo "query executed successfully\n";
+    header("location: report successful.html");
+    exit();
 } else {
-    echo "an error occured executing the query\n";
+    header("location: report unsuccessful.html");
+    exit();
 }
 ?>
