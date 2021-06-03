@@ -53,7 +53,7 @@ WHERE username = '$username' OR email = '$username'";
         <input type="text" id="fname" name="username"><br>
         <br>
         <label>Password:</label><br>
-        <input type="text" id="fPassword" name="password">
+        <input type="password" id="fPassword" name="password">
         <br><br>
         <?php
         echo $msg;
