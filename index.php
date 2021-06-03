@@ -35,13 +35,13 @@ if (isset($_SESSION["valid"]) && $_SESSION["valid"]) {
                     echo "<li><a href='log out.php'>Logout</a></li>\n";
                 }
                 ?>
-                <li><a href="#">Contact</a></li>
+                <li><a href="Contact.html">Contact</a></li>
             </ul>
         </div>
         <div class="welcome-text">
             <h1>
                 Here To <span>Help</span></h1>
-            <a href="#">Contact US</a>
+            <a href="Contact.html">Contact US</a>
         </div>
     </header>
 
