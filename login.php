@@ -8,11 +8,11 @@ session_start();
 
 <head>
     <link rel="stylesheet" href="main.css">
-    <title>TBC Home page</title>
+    <title>Login</title>
 </head>
 
 <body>
-    <h1>Welcome To TBC</h1>
+    <h1>Welcome To Accessaciti</h1>
     <?php
     $msg = '';
     if ($_SERVER["REQUEST_METHOD"] === "POST" && !empty($_POST['username']) && !empty($_POST['password'])) {
