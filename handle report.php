@@ -34,8 +34,8 @@ if ($result->num_rows > 0) {
     }
 }
 
-$sql = "INSERT INTO issue (issue_description, illegality, location_id, current_rating, rating_count, rating_text)
-VALUES ('$description', $illegality, $location_id, 0, 0, '')";
+$sql = "INSERT INTO issue (issue_description, illegality, location_id, current_rating, rating_count, rating_text, date_submitted)
+VALUES ('$description', $illegality, $location_id, 0, 0, '', curdate())";
 
 echo $sql . "<br>";
 
