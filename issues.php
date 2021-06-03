@@ -49,14 +49,14 @@ if (isset($_SESSION["valid"]) && $_SESSION["valid"]) {
             ?>
         </tr>
         <?php
-        if ($result->num_rows > 1) {
+        if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td>" . $row["issue_id"] . "</td>";
                 echo "<td>" . $row["issue_description"] . "</td>";
                 echo "<td>" . $row["illegality"] . "</td>";
-                echo "<td>" . $row["longitude"] . "</td>";
-                echo "<td>" . $row["latitude"] . "</td>";
+                echo "<td>" . $row["long_loc"] . "</td>";
+                echo "<td>" . $row["lat_loc"] . "</td>";
                 echo "<td>" . $row["current_rating"] . "</td>";
                 if ($hasfavorites) {
                     $favorite_id = $favorites->fetch_assoc()["issue_id"];
