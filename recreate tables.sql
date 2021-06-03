@@ -17,11 +17,11 @@ CREATE TABLE Type (
 );
 
 CREATE TABLE Issue (
-    issue_id int NOT NULL,
+    issue_id int NOT NULL AUTO_INCREMENT,
     issue_description TEXT NOT NULL,
     illegality boolean NOT NULL,
     location_id int NOT NULL,
-    type_id int NOT NULL,
+    type_id int,
     current_rating int NOT NULL,
     rating_count int NOT NULL,
     rating_text VARCHAR(50) NOT NULL,

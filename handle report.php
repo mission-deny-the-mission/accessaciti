@@ -1,42 +1,47 @@
 <?php
 
-  $conn = new mysqli('localhost', 'root', '', 'accessaciti');
+$conn = new mysqli('localhost', 'root', '', 'accessaciti');
 
-  $description =   $_POST['description'];
-  $latitude    =   $_POST['latitude'];
-  $longitude   =   $_POST['longitude'];
+$description  =   $_POST['description'];
+$latitude     =   $_POST['latitude'];
+$longitude    =   $_POST['longitude'];
 
-  $sq2 = "SELECT location_id FROM location
-  WHERE longitude = $longitude AND latitude = $latitude;";
+if (isset($_POST['illegality'])) {
+    echo "illegal";
+    $illegality = 1;
+} else {
+    $illegality = 0;
+}
 
-  $result = $conn->query($sq2);
+$sq2 = "SELECT location_id FROM location
+WHERE long_loc = $longitude AND lat_loc = $latitude;";
 
-  if ($result->num_rows > 0) {
+$result = $conn->query($sq2);
+
+if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $location_id = $row["location_id"];
-  } else {
-
-    $sq3 = "INSERT INTO 'location' (, lat_loc, long_loc)
-  VALUES ($lat_loc, $long_loc)";
+} else {
+    $sq3 = "INSERT INTO Location (lat_loc, long_loc)
+    VALUES ($latitude, $longitude)";
 
     if ($conn->query($sq3) === TRUE) {
-      $location_id = $conn->insert_id;
-      echo "query executed successfully\n";
+        $location_id = $conn->insert_id;
+        echo "query executed successfully\n";
     } else {
-      echo "an error occured executing the query\n";
+        echo "an error occured executing the query\n";
+        exit();
     }
-  }
+}
 
-  $sql = "INSERT INTO 'issue' (description, latitude, longitude, date)
-  VALUES ($description, $latitude, $longitude, curdate())";
+$sql = "INSERT INTO issue (issue_description, illegality, location_id, current_rating, rating_count, rating_text)
+VALUES ('$description', $illegality, $location_id, 0, 0, '')";
 
-  if ($conn->query($sql) === TRUE) {
+echo $sql . "<br>";
+
+if ($conn->query($sql) === TRUE) {
     echo "query executed successfully\n";
-  } else {
+} else {
     echo "an error occured executing the query\n";
-  }
-
-
-  $sql = "INSERT INTO date values (curdate())";
-
-  ?>
+}
+?>
