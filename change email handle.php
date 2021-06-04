@@ -11,14 +11,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $queryString = "UPDATE user SET email = '$email' WHERE user_id = " . $_SESSION["userid"] . ";";
         if ($conn->query($queryString) === True)
         {
-            echo "changed email successfully";
+            header("location: change email success.html");
+            exit();
         }else
         {
             echo "Could not run the query";
         }
     } else
     {
-        echo "your are not logged in";
+        header("location: change email not logged in.html");
+        exit();
     }
 }
 ?>
