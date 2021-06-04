@@ -33,6 +33,7 @@ if (isset($_SESSION["valid"]) && $_SESSION["valid"]) {
                     echo "<li><a href='Signup.html'>Sign Up</a></li>\n";
                 } else {
                     echo "<li><a href='change password.php'>Change Password</a></li>\n";
+                    echo "<li><a href='change email.php'>Change email</a></li>\n";
                     echo "<li><a href='log out.php'>Logout</a></li>\n";
                 }
                 ?>

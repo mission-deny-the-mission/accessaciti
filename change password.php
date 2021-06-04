@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (!$_SESSION["valid"]) {
+if (!(isset($_SESSION["valid"]) && $_SESSION["valid"])) {
     header("Location: change password not logged in.html");
     exit();
 }
