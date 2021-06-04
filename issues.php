@@ -28,35 +28,37 @@ if (isset($_SESSION["valid"]) && $_SESSION["valid"]) {
 <html>
 
 <head>
-    <link rel="stylesheet" href="main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <title>Saved issues</title>
 </head>
 
 <body>
     <h1>Saved issues</h1>
-    <table>
-        <tr>
-            <th>Issue ID</th>
-            <th>Description</th>
-            <th>illegality</th>
-            <th>longitude</th>
-            <th>latitude</th>
-            <th>current rating</th>
-            <?php
-            if ($hasfavorites) {
-                echo "<th>favorite</th>";
-            }
-            ?>
-        </tr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Description</th>
+                <th scope="col">illegality</th>
+                <th scope="col">longitude</th>
+                <th scope="col">latitude</th>
+                <th scope="col">current rating</th>
+                <?php
+                if ($hasfavorites) {
+                    echo "<th>favorite</th>";
+                }
+                ?>
+            </tr>
+        </thead>
         <?php
-        if ($result->num_rows > 1) {
+        if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
                 echo "<tr>";
                 echo "<td>" . $row["issue_id"] . "</td>";
                 echo "<td>" . $row["issue_description"] . "</td>";
                 echo "<td>" . $row["illegality"] . "</td>";
-                echo "<td>" . $row["longitude"] . "</td>";
-                echo "<td>" . $row["latitude"] . "</td>";
+                echo "<td>" . $row["long_loc"] . "</td>";
+                echo "<td>" . $row["lat_loc"] . "</td>";
                 echo "<td>" . $row["current_rating"] . "</td>";
                 if ($hasfavorites) {
                     $favorite_id = $favorites->fetch_assoc()["issue_id"];
@@ -71,6 +73,8 @@ if (isset($_SESSION["valid"]) && $_SESSION["valid"]) {
         }
         ?>
     </table>
+    <button type="button" class="btn btn-primary" onclick="document.location='index.php'">
+    Back to home page</button>
 </body>
 
 </html>

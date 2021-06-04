@@ -25,23 +25,25 @@ if (isset($_SESSION["valid"]) && $_SESSION["valid"]) {
             </div>
             <ul class="nav-area">
                 <li><a href="#">About</a></li>
+                <li><a href="issues.php">List of issues</a></li>
                 <li><a href="submit report.html">Submit bulding report</a></li>
                 <?php
                 if (!$loggedIn) {
                     echo "<li><a href='login.php'>Login</a></li>\n";
-                    echo "<li><a href='Singup.html'>Sign Up</a></li>\n";
+                    echo "<li><a href='Signup.html'>Sign Up</a></li>\n";
                 } else {
                     echo "<li><a href='change password.php'>Change Password</a></li>\n";
+                    echo "<li><a href='change email.php'>Change email</a></li>\n";
                     echo "<li><a href='log out.php'>Logout</a></li>\n";
                 }
                 ?>
-                <li><a href="#">Contact</a></li>
+                <li><a href="Contact.html">Contact</a></li>
             </ul>
         </div>
         <div class="welcome-text">
             <h1>
                 Here To <span>Help</span></h1>
-            <a href="#">Contact US</a>
+            <a href="Contact.html">Contact US</a>
         </div>
     </header>
 

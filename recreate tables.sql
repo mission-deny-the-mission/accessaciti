@@ -17,15 +17,15 @@ CREATE TABLE Type (
 );
 
 CREATE TABLE Issue (
-    issue_id int NOT NULL,
+    issue_id int NOT NULL AUTO_INCREMENT,
     issue_description TEXT NOT NULL,
     illegality boolean NOT NULL,
     location_id int NOT NULL,
-    type_id int NOT NULL,
+    type_id int,
     current_rating int NOT NULL,
     rating_count int NOT NULL,
     rating_text VARCHAR(50) NOT NULL,
-    date datetime,
+    date_submitted datetime NOT NULL,
     PRIMARY KEY (issue_id),
     FOREIGN KEY (location_id) REFERENCES Location(location_id),
     FOREIGN KEY (type_id) REFERENCES Type(type_id)
@@ -45,4 +45,11 @@ CREATE TABLE FavoriteIssues (
     user_id int NOT NULL,
     issue_id int NOT NULL,
     PRIMARY KEY (user_id, issue_id)
+);
+
+CREATE TABLE ContactDetails (
+    Name VARCHAR(50),
+    Email VARCHAR(320),
+    Subject VARCHAR(200),
+    Message TEXT
 );
