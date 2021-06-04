@@ -29,7 +29,7 @@ if (isset($_SESSION["valid"]) && $_SESSION["valid"]) {
                 <?php
                 if (!$loggedIn) {
                     echo "<li><a href='login.php'>Login</a></li>\n";
-                    echo "<li><a href='Singup.html'>Sign Up</a></li>\n";
+                    echo "<li><a href='Signup.html'>Sign Up</a></li>\n";
                 } else {
                     echo "<li><a href='change password.php'>Change Password</a></li>\n";
                     echo "<li><a href='log out.php'>Logout</a></li>\n";

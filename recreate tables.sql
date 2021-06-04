@@ -46,3 +46,10 @@ CREATE TABLE FavoriteIssues (
     issue_id int NOT NULL,
     PRIMARY KEY (user_id, issue_id)
 );
+
+CREATE TABLE ContactDetails (
+    Name VARCHAR(50),
+    Email VARCHAR(320),
+    Subject VARCHAR(200),
+    Message TEXT
+);
