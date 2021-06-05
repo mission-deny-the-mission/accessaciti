@@ -26,7 +26,7 @@ if (isset($_SESSION["valid"]) && $_SESSION["valid"]) :
                         exit();
                     } else 
                     {
-                        echo "Not successfull";
+                        echo "Not successful";
                     }            
                     $oldpassword = '';
                     $newpassword = '';
