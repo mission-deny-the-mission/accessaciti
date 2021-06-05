@@ -1,8 +1,8 @@
 <?php
-//include 'change password.php';
+session_start();
 $conn = new mysqli('localhost', 'root', '', 'accessaciti');
 if (isset($_POST['Change password']));
-//else $error = "An error has occured, go to previous page";
+else $error = "An error has occured, go to previous page";
 extract($_POST);
 
 if (isset($_SESSION["valid"]) && $_SESSION["valid"]) :
