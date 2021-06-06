@@ -1,6 +1,6 @@
 <?php
 
-$con = new mysqli('localhost', 'root', '', 'db_myac');
+$con = new mysqli('localhost', 'root', '', 'accessaciti');
 
 $direction = $_POST['hid_direction'];
 $adjuster = intval($direction);
