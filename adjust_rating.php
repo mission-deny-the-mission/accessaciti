@@ -1,6 +1,6 @@
 <?php
 
-$con = new mysqli('localhost', 'root', '', 'accessaciti');
+$con = new mysqli('localhost', 'root', '', 'db_myac');
 
 $direction = $_POST['hid_direction'];
 $adjuster = intval($direction);
@@ -14,6 +14,7 @@ $count = $row['rating_count'];
 
 ++$count;
 $current = $current + $adjuster;
+echo $current;
 $percentage = ($current / $count) * 100;
 
 if ($percentage >= 75)
@@ -33,7 +34,9 @@ else
   $text = 'Most users found this report very unhelpful.';
 }
 
-$sql2 = "INSERT INTO `issue` (`rating_text`, `current_rating`, `rating_count`) VALUES ('$text', '$current', '$count')";
+$sql2 = "UPDATE `issue` SET `rating_text`='$text', `current_rating`='$current', `rating_count`='$count' WHERE `issue_id` = '$issue'";
 $rs2 = mysqli_query($con, $sql2);
+
+header("location: home.php");
 
 ?>
