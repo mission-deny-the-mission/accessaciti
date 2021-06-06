@@ -68,17 +68,18 @@ if (!$conn) {
   die("Connection failed: " . mysqli_connect_error());
 }
 
-$sql = "SELECT issue.issue_id, issue.issue_description, issue.rating_text, location.lat_loc, location.long_loc FROM issue, location,    WHERE issue.location_id = location.location_id";
+$sql = "SELECT issue.issue_id, issue.issue_description, issue.rating_text, location.lat_loc, location.long_loc FROM issue, location WHERE issue.location_id = location.location_id";
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
   // output data of each row
   while($row = mysqli_fetch_assoc($result)) {
     $Desc = $row["issue_description"];
+    $Id = $row["issue_id"];
     $Lat = $row["lat_loc"];
     $Long = $row["long_loc"];
     $Rat = $row["rating_text"];
-    echo "<script>var marker = new mapboxgl.Marker().setLngLat([$Long,$Lat]).setPopup(new mapboxgl.Popup().setMaxWidth('300px').setHTML(\"<h1>$Desc</h1><body>$Rat<br><form><button type='button' class='btn link' onclick='window.location.href='change_password.php''>I found this report helpful</button><button type='button' class='btn link' onclick='window.location.href='change_password.php''>I found this report unhelpful</button><br><button type='button' class='btn link' onclick='window.location.href='change_password.php''>I encountered this issue today</button></form></body>\")).addTo(map);</script>";
+    echo "<script>var marker = new mapboxgl.Marker().setLngLat([$Long,$Lat]).setPopup(new mapboxgl.Popup().setMaxWidth('300px').setHTML(\"<h1>$Desc</h1><body>$Rat<br><form method='POST', action='adjust_rating.php'><input type='hidden', id= 'hid_issID', name= 'hid_issID', value='$Id'><input type='hidden' id='hid_direction' name='hid_direction' value='1'><input type='submit' value = 'I found this report helpful.'></form><form method='POST', action='adjust_rating.php'><input type='hidden', id= 'hid_issID', name= 'hid_issID', value='$Id'><input type='hidden' id='hid_direction' name='hid_direction' value='-1'><input type='submit' value = 'I found this report unhelpful.'></form><br><form><button type='button' class='btn link' onclick='window.location.href=\'change_password.php\''>I encountered this issue today</button></form></body>\")).addTo(map);</script>";
   }
 } else {
   echo "0 results";
