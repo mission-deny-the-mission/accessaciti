@@ -20,11 +20,15 @@ if (!(isset($_SESSION["valid"]) && $_SESSION["valid"])) {
                 <input type="password" name="oldpassword" id="old password" class="form-control"
                 placeholder="Old Password" required><br>
             </div>
-            <div class="form-group">
-                <label for="new password">New password</label><br>
-                <input type="password" name="newpassword" id="new password" class="form-control" placeholder="Password" required><br>
-                <label for="repeat password">Verify password:</label><br>
-                <input type="password" name="verifypassword" id="verify password" class="form-control" placeholder="Verify Password" required><br>
+            <div class="row">
+                <div class="form-group col">
+                    <label for="new password">New password</label><br>
+                    <input type="password" name="newpassword" id="new password" class="form-control" placeholder="Password" required><br>
+                </div>
+                <div class="form-group col">
+                    <label for="repeat password">Verify password:</label><br>
+                    <input type="password" name="verifypassword" id="verify password" class="form-control" placeholder="Verify Password" required><br>
+                </div>
             </div>
             <input type="submit" name="Change password" class="btn btn-primary">
         </form>
