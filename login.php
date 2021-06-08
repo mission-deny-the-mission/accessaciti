@@ -56,11 +56,11 @@ WHERE username = '$username' OR email = '$username'";
         <br>
         <div class="col-md-6">
             <label for="fname"> Email Address/Username:</label><br>
-            <input type="text" id="fname" name="username" class="form-control" required>
+            <input type="text" id="fname" name="username" class="form-control" placeholder="Username or Email" required>
         </div>
         <div class="col-md-6">
             <label for="fPassword">Password:</label><br>
-            <input type="password" id="fPassword" name="password" class="form-control" required>
+            <input type="password" id="fPassword" name="password" class="form-control" placeholder="Password" required>
         </div>
         <?php
         if ($error) {
