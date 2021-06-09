@@ -44,7 +44,9 @@ CREATE TABLE User (
 CREATE TABLE FavoriteIssues (
     user_id int NOT NULL,
     issue_id int NOT NULL,
-    PRIMARY KEY (user_id, issue_id)
+    PRIMARY KEY (user_id, issue_id),
+    FOREIGN KEY (user_id) REFERENCES User(user_id),
+    FOREIGN KEY (issue_id) REFERENCES Issue(issue_id)
 );
 
 CREATE TABLE ContactDetails (
