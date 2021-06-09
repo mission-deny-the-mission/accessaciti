@@ -3,7 +3,7 @@
 
 <head>
 
-    <link rel="stylesheet" href="main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <h1>Create Your Account</h1>
 
 </head>
@@ -11,25 +11,42 @@
 <body>
 
     <form action="sign_up_handle.php" method="POST">
-        <br>
-        <label>First Name:</label><br>
-        <input type="text" id="fname" name="firstname"><br>
-        <br>
-        <label>Last Name:</label><br>
-        <input type="text" id="lname" name="lastname"><br>
-        <br>
-        <label>Username:</label><br>
-        <input type="text" id="uname" name="username"><br>
-        <br>
-        <label> Email Address:</label><br>
-        <input type="text" id="fname" name="email"><br>
-        <br>
-        <label>Create Password:</label><br>
-        <input type="password" id="fCreate a Password" name="password"><br>
-        <br>
-        <label>Confirm Password :</label><br>
-        <input type="password" id="fConfirm Your Password" name="confirm_password"><br>
-        <button value="Submit">Sign Up</button>
+        <div class="form-group row">
+            <div class="col">
+                <label>First Name:</label><br>
+                <input type="text" id="fname" name="firstname" class="form-control"><br>
+            </div>
+
+            <div class="col">
+                <label>Last Name:</label><br>
+                <input type="text" id="lname" name="lastname" class="form-control"><br>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Username:</label><br>
+            <input type="text" id="uname" name="username" class="form-control"><br>
+        </div>
+
+        <div class="form-group">
+            <label> Email Address:</label><br>
+            <input type="text" id="fname" name="email" class="form-control"><br>
+        </div>
+
+        <div class="row form-group">
+            <div class="col">
+                <label>Confirm Password :</label><br>
+                <input type="password" id="fConfirm Your Password" name="confirm_password" class="form-control"><br>
+            </div>
+
+            <div class="col">
+                <label>Create Password:</label><br>
+                <input type="password" id="fCreate a Password" name="password" class="form-control"><br>
+            </div>
+        </div>
+
+
+        <button value="Submit" class="btn btn-primary">Sign Up</button>
     </form>
     <br>
     <!--
