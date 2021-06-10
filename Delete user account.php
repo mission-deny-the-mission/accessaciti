@@ -10,7 +10,7 @@ if ($conn->connect_error) {
 
 if (isset($_SESSION["valid"]) && $_SESSION["valid"]){
 
-    $user_id = $_SESSION['user_id'];
+    $user_id = $_SESSION['userid'];
     $newpassword = $_POST['password'];
     $password_hash = password_hash($newpassword, PASSWORD_BCRYPT);
     $conn_check = $conn->query("SELECT password_hash FROM user WHERE user_id = $user_id");
