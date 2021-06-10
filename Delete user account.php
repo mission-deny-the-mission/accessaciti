@@ -15,11 +15,12 @@ if (isset($_SESSION["valid"]) && $_SESSION["valid"]){
     $password_hash = password_hash($newpassword, PASSWORD_BCRYPT);
     $conn_check = $conn->query("SELECT password_hash FROM user WHERE user_id = $user_id");
     
-    if (password_verify($newpassword, $conn_check['password_hash'])) {
+    if (password_verify($newpassword, $conn_check->fetch_assoc()['password_hash'])) {
         $fetch = $conn->query("DELETE FROM FavoriteIssues WHERE user_id = $user_id");
         $fetch2 = $conn->query("DELETE FROM users WHERE user_id = $user_id");
         if ($fetch === True && $fetch2 === True) 
         {
+            session_destroy();
             header ("location: DeleteAccSuccessful.html");
             exit();
         } else 
