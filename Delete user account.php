@@ -17,7 +17,7 @@ if (isset($_SESSION["valid"]) && $_SESSION["valid"]){
     
     if (password_verify($newpassword, $conn_check->fetch_assoc()['password_hash'])) {
         $fetch = $conn->query("DELETE FROM FavoriteIssues WHERE user_id = $user_id");
-        $fetch2 = $conn->query("DELETE FROM users WHERE user_id = $user_id");
+        $fetch2 = $conn->query("DELETE FROM user WHERE user_id = $user_id");
         if ($fetch === True && $fetch2 === True) 
         {
             session_destroy();
