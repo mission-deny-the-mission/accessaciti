@@ -4,8 +4,8 @@ USE accessaciti;
 
 CREATE TABLE Location (
     location_id int NOT NULL AUTO_INCREMENT,
-    lat_loc decimal(6,3) NOT NULL,
-    long_loc decimal(6,3) NOT NULL,
+    lat_loc decimal(25,20) NOT NULL,
+    long_loc decimal(25,20) NOT NULL,
     PRIMARY KEY (location_id)
 );
 
@@ -13,6 +13,7 @@ CREATE TABLE Type (
     type_id int NOT NULL,
     issue_name char(20) NOT NULL,
     symbol_ref char(100) NOT NULL,
+    type_colour VARCHAR(7),
     PRIMARY KEY (type_id)
 );
 
@@ -31,7 +32,7 @@ CREATE TABLE Issue (
     FOREIGN KEY (type_id) REFERENCES Type(type_id)
 );
 
-CREATE TABLE User (
+CREATE TABLE account (
     user_id int NOT NULL AUTO_INCREMENT,
     username VARCHAR (128) NOT NULL,
     firstname VARCHAR (60) NOT NULL,
@@ -45,7 +46,7 @@ CREATE TABLE FavoriteIssues (
     user_id int NOT NULL,
     issue_id int NOT NULL,
     PRIMARY KEY (user_id, issue_id),
-    FOREIGN KEY (user_id) REFERENCES User(user_id),
+    FOREIGN KEY (user_id) REFERENCES account(user_id),
     FOREIGN KEY (issue_id) REFERENCES Issue(issue_id)
 );
 
