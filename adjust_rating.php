@@ -1,10 +1,11 @@
 <?php
 
-$con = new mysqli('localhost', 'root', '', 'accessaciti');
+include('connect to database.php');
+$con = connect_to_database();
 
-$direction = $_POST['hid_direction'];
+$direction = mysqli_real_escape_string($con, $_POST['hid_direction']);
 $adjuster = intval($direction);
-$issue = $_POST['hid_issID'];
+$issue = mysqli_real_escape_string($con, $_POST['hid_issID']);
 
 $sql1 = "SELECT `current_rating`, `rating_count` FROM `issue` WHERE `issue_id` = '$issue'";
 $rs1 = mysqli_query($con, $sql1);

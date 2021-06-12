@@ -41,22 +41,16 @@
 </style>
 </head>
 <body>
-  <?php $pfilterToggles = [1,2,3,4]; ?>
+  <?php
+  require('connect to database.php');
+  $conn = connect_to_database();
+  $pfilterToggles = [1,2,3,4]; ?>
   <script>
     let allMarkers = [];
     let filterToggles = [1,2,3,4];
   </script>
   <?php
-  $servername = "localhost";
-  $username = "root";
-  $password = "";
-  $dbname = "accessaciti";
-
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
-
       session_start();
-
-
       if (isset($_SESSION["valid"]) && $_SESSION["valid"])
       {
         $loggedId = $_SESSION["userid"];
@@ -149,31 +143,19 @@
 
 
 <?php
-function addMarks($arr){
+function addMarks($arr,$conn){
 
 foreach ($arr as $i => $value) {
-  markerMaker($value);
+  markerMaker($value,$conn);
 }
 }
-addMarks([1,2,3,4]);
+addMarks([1,2,3,4],$conn);
 ?>
 
 
 <?php
-  function markerMaker($display_type)
+  function markerMaker($display_type,$conn)
   {
-
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "accessaciti";
-
-  // Create connection
-  $conn = mysqli_connect($servername, $username, $password, $dbname);
-  // Check connection
-  if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-  }
   $sql = "SELECT issue.issue_id, type.type_colour, issue.issue_description, issue.rating_text, location.lat_loc, location.long_loc FROM issue, location, type WHERE issue.location_id = location.location_id AND issue.type_id = type.type_id AND type.type_id = $display_type";
   $result = mysqli_query($conn, $sql);
 
@@ -191,7 +173,6 @@ addMarks([1,2,3,4]);
       echo "<script>var marker = new mapboxgl.Marker({color: '$colour'}).setLngLat([$Long,$Lat]).setPopup(new mapboxgl.Popup().setMaxWidth('300px').setHTML(\"<h1>$Desc</h1><body>$Rat<br><form method='POST', action='adjust_rating.php'><input type='hidden', id= 'hid_issID', name= 'hid_issID', value='$Id'><input type='hidden' id='hid_direction' name='hid_direction' value='1'><input type='submit' value = 'I found this report helpful.'></form><form method='POST', action='adjust_rating.php'><input type='hidden', id= 'hid_issID', name= 'hid_issID', value='$Id'><input type='hidden' id='hid_direction' name='hid_direction' value='-1'><input type='submit' value = 'I found this report unhelpful.'></form><br> ".$save." </body>\")).addTo(map); allMarkers.push(marker);</script>";
     }
   }
-  mysqli_close($conn);
   }
   ?>
 
@@ -288,10 +269,10 @@ function clearMarks(){
   if (!isset($_SESSION["toggle2"])){$_SESSION["toggle2"] = True;}
   if (!isset($_SESSION["toggle3"])){$_SESSION["toggle3"] = True;}
 
-  function addAll($tog1,$tog2,$tog3){
-    if ($tog1){markerMaker(1);}
-    if ($tog2){markerMaker(2);}
-    if ($tog3){markerMaker(3);}
+  function addAll($conn){
+    if ($_SESSION["toggle1"]){markerMaker(1,$conn);}
+    if ($_SESSION["toggle2"]){markerMaker(2,$conn);}
+    if ($_SESSION["toggle3"]){markerMaker(3,$conn);}
   }
   ?>
 
@@ -301,19 +282,19 @@ function clearMarks(){
      echo "<script> clearMarks()</script>";
      if ($_SESSION["toggle1"]){$_SESSION["toggle1"] = False;}
      else {$_SESSION["toggle1"] = True;}
-     addAll($_SESSION["toggle1"],$_SESSION["toggle2"],$_SESSION["toggle3"]);
+     addAll($conn);
  }
  if(isset($_POST["obstruction"])){
      echo "<script> clearMarks()</script>";
      if ($_SESSION["toggle2"]){$_SESSION["toggle2"] = False;}
      else {$_SESSION["toggle2"] = True;}
-     addAll($_SESSION["toggle1"],$_SESSION["toggle2"],$_SESSION["toggle3"]);
+     addAll($conn);
  }
  if(isset($_POST["surface"])){
      echo "<script> clearMarks()</script>";
      if ($_SESSION["toggle3"]){$_SESSION["toggle3"] = False;}
      else {$_SESSION["toggle3"] = True;}
-     addAll($_SESSION["toggle1"],$_SESSION["toggle2"],$_SESSION["toggle3"]);
+     addAll($conn);
  }
  else{
 

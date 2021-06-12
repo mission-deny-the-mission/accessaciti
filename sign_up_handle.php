@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $password_hash = password_hash($password, PASSWORD_BCRYPT);
 
-    $previous_usernames = $conn->query("SELECT username FROM user WHERE username = '$username'");
+    $previous_usernames = $conn->query("SELECT username FROM account WHERE username = '$username'");
 
     if ($previous_usernames->num_rows > 0) {
         header("Location: username_already_exists.html");
@@ -33,16 +33,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // TODO: find out if this is the best way to check for null
     if ($email == "") {
-        $query = "INSERT INTO user (username, firstname, lastname, password_hash)
+        $query = "INSERT INTO account (username, firstname, lastname, password_hash)
             VALUES ('$username', '$firstname', '$lastname', '$password_hash');";
     } else {
-        $query = "INSERT INTO user (username, firstname, lastname, email, password_hash)
+        $query = "INSERT INTO account (username, firstname, lastname, email, password_hash)
             VALUES ('$username', '$firstname', '$lastname', '$email', '$password_hash');";
     }
 
     if ($conn->query($query) === TRUE) {
         echo "Sign up was successful<br>";
-        header("Location: sign_up_complete.html");
+        header("Location: home.php");
         $conn->close();
         exit();
     } else {

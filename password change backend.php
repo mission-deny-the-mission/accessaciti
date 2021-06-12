@@ -7,7 +7,7 @@ extract($_POST);
 
 if (isset($_SESSION["valid"]) && $_SESSION["valid"]) :
     $username = $_SESSION['username'];
-    
+
 
     $oldpassword = $_POST['oldpassword'];
     $newpassword = $_POST['newpassword'];
@@ -16,18 +16,18 @@ if (isset($_SESSION["valid"]) && $_SESSION["valid"]) :
     if ($oldpassword != "" && $newpassword != "" && $verifypassword != "") :
         if ($newpassword == $verifypassword) :
             if ($newpassword != $oldpassword) :
-                $sql = "SELECT * FROM user WHERE user_id = " . $_SESSION["userid"] . ";";
+                $sql = "SELECT * FROM account WHERE user_id = " . $_SESSION["userid"] . ";";
                 $conn_check = $conn->query($sql);
                 if (password_verify($oldpassword, $conn_check->fetch_assoc()['password_hash'])) :
-                    $fetch = $conn->query("UPDATE user SET password_hash = '$password_hash' WHERE username ='$username'");
-                    if ($fetch === True) 
+                    $fetch = $conn->query("UPDATE account SET password_hash = '$password_hash' WHERE username ='$username'");
+                    if ($fetch === True)
                     {
-                        header ("location: Password changed.html");
+                        header ("location: home.php");
                         exit();
-                    } else 
+                    } else
                     {
                         echo "Not successful";
-                    }            
+                    }
                 else :
                     echo "Old password is incorrect. Please try again.";
                 endif;

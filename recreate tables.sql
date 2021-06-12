@@ -12,7 +12,7 @@ CREATE TABLE Location (
 CREATE TABLE Type (
     type_id int NOT NULL,
     issue_name char(20) NOT NULL,
-    symbol_ref char(100) NOT NULL,
+    symbol_ref char(100),
     type_colour VARCHAR(7),
     PRIMARY KEY (type_id)
 );
@@ -20,13 +20,13 @@ CREATE TABLE Type (
 CREATE TABLE Issue (
     issue_id int NOT NULL AUTO_INCREMENT,
     issue_description TEXT NOT NULL,
-    illegality boolean NOT NULL,
+    illegality boolean,
     location_id int NOT NULL,
     type_id int,
     current_rating int NOT NULL,
     rating_count int NOT NULL,
     rating_text VARCHAR(50) NOT NULL,
-    date_submitted datetime NOT NULL,
+    date_submitted datetime,
     PRIMARY KEY (issue_id),
     FOREIGN KEY (location_id) REFERENCES Location(location_id),
     FOREIGN KEY (type_id) REFERENCES Type(type_id)

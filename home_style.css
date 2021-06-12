@@ -10,9 +10,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
   cursor: pointer;
   opacity: 0.8;
   position: fixed;
-  top: 23px;
-  right: 28px;
-  width: 280px;
+  top: 2%;
+  right: 1%;
+  width: 10%;
+  height: 6%;
 }
 
 .open-button1 {
@@ -23,9 +24,10 @@ body {font-family: Arial, Helvetica, sans-serif;}
   cursor: pointer;
   opacity: 0.8;
   position: fixed;
-  top: 23px;
-  right: 308px;
-  width: 280px;
+  top: 2%;
+  right: 11%;
+  width: 10%;
+  height: 6%;
 }
 
 /* The popup form - hidden by default */
@@ -34,15 +36,6 @@ body {font-family: Arial, Helvetica, sans-serif;}
   position: fixed;
   top: 0;
   right: 15px;
-  border: 3px solid #f1f1f1;
-  z-index: 9;
-}
-
-.form-popup1 {
-  display: none;
-  position: fixed;
-  top: 0;
-  right: 315px;
   border: 3px solid #f1f1f1;
   z-index: 9;
 }
@@ -90,3 +83,52 @@ body {font-family: Arial, Helvetica, sans-serif;}
 .form-container .btn:hover, .open-button:hover {
   opacity: 1;
 }
+
+.btn_filter {
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  height: 5%;
+  width: 7%;
+  left: 2.5%;
+
+}
+
+body {background-color: #3489eb;}
+#btn_report {
+  background-color: #1b17e8;
+  color: white;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  height: 10%;
+  top: 10%;
+  right: 75%;
+  width: 15%;
+}
+#reportPopup {
+  display: none;
+  position: fixed;
+  top: 50%
+  left 10%;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+#filter{
+  background-color: #ffffff;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  height: 25%;
+  right: 90%;
+  width: 8%;
+  bottom: 3%
+}
+#steps {background-color: #4287f5; bottom: 16%}
+#obstruction {background-color: #ff00bf; bottom: 10%}
+#surface {background-color: #5eff00; bottom: 4%}

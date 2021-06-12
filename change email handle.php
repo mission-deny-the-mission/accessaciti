@@ -8,10 +8,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
         $conn = connect_to_database();
         $email = mysqli_real_escape_string($conn, $_POST["new_email"]);
 
-        $queryString = "UPDATE user SET email = '$email' WHERE user_id = " . $_SESSION["userid"] . ";";
+        $queryString = "UPDATE account SET email = '$email' WHERE user_id = " . $_SESSION["userid"] . ";";
         if ($conn->query($queryString) === True)
         {
-            header("location: change email success.html");
+            header("location: home.php");
             exit();
         }else
         {
