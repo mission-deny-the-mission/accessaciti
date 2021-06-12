@@ -1,18 +1,18 @@
 DROP TABLE IF EXISTS FavoriteIssues;
-DROP TABLE IF EXISTS Issue;
-DROP TABLE IF EXISTS Type;
-DROP TABLE IF EXISTS Location;
+DROP TABLE IF EXISTS issue;
+DROP TABLE IF EXISTS type;
+DROP TABLE IF EXISTS location;
 DROP TABLE IF EXISTS account;
 DROP TABLE IF EXISTS ContactDetails;
 
-CREATE TABLE Location (
+CREATE TABLE location (
     location_id int NOT NULL AUTO_INCREMENT,
     lat_loc decimal(25,20) NOT NULL,
     long_loc decimal(25,20) NOT NULL,
     PRIMARY KEY (location_id)
 );
 
-CREATE TABLE Type (
+CREATE TABLE type (
     type_id int NOT NULL,
     issue_name char(20) NOT NULL,
     symbol_ref char(100),
@@ -20,7 +20,7 @@ CREATE TABLE Type (
     PRIMARY KEY (type_id)
 );
 
-CREATE TABLE Issue (
+CREATE TABLE issue (
     issue_id int NOT NULL AUTO_INCREMENT,
     issue_description TEXT NOT NULL,
     illegality boolean,
@@ -31,8 +31,8 @@ CREATE TABLE Issue (
     rating_text VARCHAR(50) NOT NULL,
     date_submitted datetime,
     PRIMARY KEY (issue_id),
-    FOREIGN KEY (location_id) REFERENCES Location(location_id),
-    FOREIGN KEY (type_id) REFERENCES Type(type_id)
+    FOREIGN KEY (location_id) REFERENCES location(location_id),
+    FOREIGN KEY (type_id) REFERENCES type(type_id)
 );
 
 CREATE TABLE account (
@@ -50,7 +50,7 @@ CREATE TABLE FavoriteIssues (
     issue_id int NOT NULL,
     PRIMARY KEY (user_id, issue_id),
     FOREIGN KEY (user_id) REFERENCES account(user_id),
-    FOREIGN KEY (issue_id) REFERENCES Issue(issue_id)
+    FOREIGN KEY (issue_id) REFERENCES issue(issue_id)
 );
 
 CREATE TABLE ContactDetails (
