@@ -1,8 +1,10 @@
-DROP DATABASE IF EXISTS accessaciti;
-CREATE DATABASE accessaciti;
-USE accessaciti;
-
+DROP TABLE IF EXISTS FavoriteIssues;
+DROP TABLE IF EXISTS Issue;
+DROP TABLE IF EXISTS Type;
 DROP TABLE IF EXISTS Location;
+DROP TABLE IF EXISTS account;
+DROP TABLE IF EXISTS ContactDetails;
+
 CREATE TABLE Location (
     location_id int NOT NULL AUTO_INCREMENT,
     lat_loc decimal(25,20) NOT NULL,
@@ -10,7 +12,6 @@ CREATE TABLE Location (
     PRIMARY KEY (location_id)
 );
 
-DROP TABLE IF EXISTS Type;
 CREATE TABLE Type (
     type_id int NOT NULL,
     issue_name char(20) NOT NULL,
@@ -19,7 +20,6 @@ CREATE TABLE Type (
     PRIMARY KEY (type_id)
 );
 
-DROP TABLE IF EXISTS Issue;
 CREATE TABLE Issue (
     issue_id int NOT NULL AUTO_INCREMENT,
     issue_description TEXT NOT NULL,
@@ -35,7 +35,6 @@ CREATE TABLE Issue (
     FOREIGN KEY (type_id) REFERENCES Type(type_id)
 );
 
-DROP TABLE IF EXISTS account;
 CREATE TABLE account (
     user_id int NOT NULL AUTO_INCREMENT,
     username VARCHAR (128) NOT NULL,
@@ -46,7 +45,6 @@ CREATE TABLE account (
     PRIMARY KEY (user_id)
 );
 
-DROP TABLE IF EXISTS FavoriteIssues;
 CREATE TABLE FavoriteIssues (
     user_id int NOT NULL,
     issue_id int NOT NULL,
@@ -55,7 +53,6 @@ CREATE TABLE FavoriteIssues (
     FOREIGN KEY (issue_id) REFERENCES Issue(issue_id)
 );
 
-DROP TABLE IF EXISTS ContactDetails;
 CREATE TABLE ContactDetails (
     Name VARCHAR(50),
     Email VARCHAR(320),
