@@ -3,9 +3,9 @@ function connect_to_database()
 {
     if (file_exists("../watIndex.html") || file_exists("watIndex.html")){
         $serveraddr = "stu-db.aet.leedsbeckett.ac.uk:3306";
-        $username = "c3550862";
-        $password = "MyDB56982966";
-        $database = "c3550862";
+        $username = "";
+        $password = "";
+        $database = "";
     } else {
         $serveraddr = "localhost";
         $username = "root";
