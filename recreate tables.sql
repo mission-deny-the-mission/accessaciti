@@ -52,10 +52,3 @@ CREATE TABLE FavoriteIssues (
     FOREIGN KEY (user_id) REFERENCES account(user_id),
     FOREIGN KEY (issue_id) REFERENCES issue(issue_id)
 );
-
-CREATE TABLE ContactDetails (
-    Name VARCHAR(50),
-    Email VARCHAR(320),
-    Subject VARCHAR(200),
-    Message TEXT
-);
