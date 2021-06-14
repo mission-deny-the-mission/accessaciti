@@ -8,6 +8,9 @@ $latitude = mysqli_real_escape_string($con, $_POST['reportLat']);
 $longitude = mysqli_real_escape_string($con, $_POST['reportLong']);
 $type = mysqli_real_escape_string($con, $_POST['sel_type']);
 
+if($latitude != null && $latitude != '' && $longitude != null && $longitude != '')
+{
+
 $sql1 = "INSERT INTO `location` (`lat_loc`,`long_loc`) VALUES ('$latitude', '$longitude')";
 
 $rs1 = mysqli_query($con,$sql1);
@@ -31,7 +34,8 @@ if($rs1)
 }
 else{echo 'sql1';}
 
-
+}
+else {echo"<b1><p>AccessaCiti cannot access this device's location. Please check your browser settings or try again later. </p> <button onclick=\"document.location='home.php'\">Back to Home</button></b1>";}
 
 
 
